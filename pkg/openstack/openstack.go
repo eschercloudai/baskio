@@ -17,6 +17,7 @@ package ostack
 
 import (
 	"fmt"
+	"github.com/drew-viles/baskio/pkg/constants"
 	"github.com/gophercloud/gophercloud"
 	"github.com/gophercloud/gophercloud/openstack"
 	"github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/floatingips"
@@ -85,7 +86,7 @@ func (c *Client) CreateKeypair(KeyNamePrefix string) *keypairs.KeyPair {
 
 // CreateServer creates a compute instance in Openstack.
 func (c *Client) CreateServer(keypair *keypairs.KeyPair, imageID, flavorName, networkID string, enableConfigDrive bool) (*servers.Server, string) {
-	trivyVersion := "0.31.3"
+	trivyVersion := constants.TrivyVersion
 	client := createComputeClient(c)
 
 	serverFlavorID := c.GetFlavorIDByName(flavorName)
